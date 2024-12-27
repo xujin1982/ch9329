@@ -35,9 +35,9 @@ def wheel_int_to_bytes(wheel_delta: int):
     if abs(wheel_delta) > 127:
         raise RuntimeError("Maximum wheel delta allowed is 127.")
     if wheel_delta >= 0:
-        return (0x00 + wheel_delta).to_bytes(1)
+        return (0x00 + wheel_delta).to_bytes(1, byteorder='little')
     else:
-        return (0x100 + wheel_delta).to_bytes(1)
+        return (0x100 + wheel_delta).to_bytes(1, byteorder='little')
 
 
 def send_data_absolute(
